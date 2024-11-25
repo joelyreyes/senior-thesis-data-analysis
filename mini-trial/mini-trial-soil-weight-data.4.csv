@@ -1,0 +1,98 @@
+"Date (day of September, 2024)",Soil,Treatment,Replicate,Measured Weight (g),Saturated Weight (g),Change in water (g)
+3,Manteca,Control,1,301,341,40
+3,Manteca,Control,2,301,342,41
+3,Manteca,Control,3,300,336,36
+3,Manteca,Control,4,301,360,59
+3,Manteca,Compost,1,300,359,59
+3,Manteca,Compost,2,300,355,55
+3,Manteca,Compost,3,300,353,53
+3,Manteca,Compost,4,301,360,59
+3,Manteca,Compost + Biochar,1,299,340,41
+3,Manteca,Compost + Biochar,2,301,354,53
+3,Manteca,Compost + Biochar,3,301,350,49
+3,Manteca,Compost + Biochar,4,301,347,46
+3,Russell Ranch,Control,1,299,395,96
+3,Russell Ranch,Control,2,302,392,90
+3,Russell Ranch,Control,3,301,389,88
+3,Russell Ranch,Control,4,301,394,93
+3,Russell Ranch,Compost,1,302,400,98
+3,Russell Ranch,Compost,2,300,395,95
+3,Russell Ranch,Compost,3,301,400,99
+3,Russell Ranch,Compost,4,300,397,97
+3,Russell Ranch,Compost + Biochar,1,301,399,98
+3,Russell Ranch,Compost + Biochar,2,301,399,98
+3,Russell Ranch,Compost + Biochar,3,300,397,97
+3,Russell Ranch,Compost + Biochar,4,300,401,101
+6,Manteca,Control,1,297,341,44
+6,Manteca,Control,2,295,342,47
+6,Manteca,Control,3,303,336,33
+6,Manteca,Control,4,315,360,45
+6,Manteca,Compost,1,302,359,57
+6,Manteca,Compost,2,305,355,50
+6,Manteca,Compost,3,318,353,35
+6,Manteca,Compost,4,291,360,69
+6,Manteca,Compost + Biochar,1,292,340,48
+6,Manteca,Compost + Biochar,2,294,354,60
+6,Manteca,Compost + Biochar,3,313,350,37
+6,Manteca,Compost + Biochar,4,313,347,34
+6,Russell Ranch,Control,1,342,395,53
+6,Russell Ranch,Control,2,344,392,48
+6,Russell Ranch,Control,3,365,389,24
+6,Russell Ranch,Control,4,373,394,21
+6,Russell Ranch,Compost,1,337,400,63
+6,Russell Ranch,Compost,2,327,395,68
+6,Russell Ranch,Compost,3,340,400,60
+6,Russell Ranch,Compost,4,340,397,57
+6,Russell Ranch,Compost + Biochar,1,360,399,39
+6,Russell Ranch,Compost + Biochar,2,365,399,34
+6,Russell Ranch,Compost + Biochar,3,358,397,39
+6,Russell Ranch,Compost + Biochar,4,386,401,15
+9,Manteca,Control,1,277,341,64
+9,Manteca,Control,2,275,342,67
+9,Manteca,Control,3,273,336,63
+9,Manteca,Control,4,288,360,72
+9,Manteca,Compost,1,294,359,65
+9,Manteca,Compost,2,286,355,69
+9,Manteca,Compost,3,286,353,67
+9,Manteca,Compost,4,285,360,75
+9,Manteca,Compost + Biochar,1,270,340,70
+9,Manteca,Compost + Biochar,2,279,354,75
+9,Manteca,Compost + Biochar,3,275,350,75
+9,Manteca,Compost + Biochar,4,280,347,67
+9,Russell Ranch,Control,1,308,395,87
+9,Russell Ranch,Control,2,308,392,84
+9,Russell Ranch,Control,3,309,389,80
+9,Russell Ranch,Control,4,315,394,79
+9,Russell Ranch,Compost,1,314,400,86
+9,Russell Ranch,Compost,2,304,395,91
+9,Russell Ranch,Compost,3,317,400,83
+9,Russell Ranch,Compost,4,311,397,86
+9,Russell Ranch,Compost + Biochar,1,314,399,85
+9,Russell Ranch,Compost + Biochar,2,316,399,83
+9,Russell Ranch,Compost + Biochar,3,312,397,85
+9,Russell Ranch,Compost + Biochar,4,317,401,84
+12,Manteca,Control,1,281,341,60
+12,Manteca,Control,2,279,342,63
+12,Manteca,Control,3,277,336,59
+12,Manteca,Control,4,297,360,63
+12,Manteca,Compost,1,293,359,66
+12,Manteca,Compost,2,287,355,68
+12,Manteca,Compost,3,294,353,59
+12,Manteca,Compost,4,290,360,70
+12,Manteca,Compost + Biochar,1,277,340,63
+12,Manteca,Compost + Biochar,2,286,354,68
+12,Manteca,Compost + Biochar,3,287,350,63
+12,Manteca,Compost + Biochar,4,290,347,57
+12,Russell Ranch,Control,1,330,395,65
+12,Russell Ranch,Control,2,331,392,61
+12,Russell Ranch,Control,3,320,389,69
+12,Russell Ranch,Control,4,342,394,52
+12,Russell Ranch,Compost,1,334,400,66
+12,Russell Ranch,Compost,2,330,395,65
+12,Russell Ranch,Compost,3,335,400,65
+12,Russell Ranch,Compost,4,332,397,65
+12,Russell Ranch,Compost + Biochar,1,343,399,56
+12,Russell Ranch,Compost + Biochar,2,335,399,64
+12,Russell Ranch,Compost + Biochar,3,337,397,60
+12,Russell Ranch,Compost + Biochar,4,339,401,62
+```,,,,,,
