@@ -1,0 +1,125 @@
+---
+title: "phyloseq_analysis"
+output: html_document
+---
+
+# Setup
+## Get libraries
+
+```{r, message=FALSE}
+library(dplyr)
+library(dada2)
+library(phyloseq)
+library(Biostrings)
+library(ggplot2)
+```
+
+## Compile from metadata.txt (editable), and all other files (not editable)
+```{r}
+base = "."
+data_dir = file.path(base, "data")
+out_dir = file.path(base, "results")
+ids.file = "sample_ids_JoelyReyes.txt"
+
+metadata.file = file.path(out_dir, "metadata.txt")
+ASVfasta.file = file.path(out_dir, "ITS.fa")
+ASVtable.file = file.path(out_dir, "ITS_ASVtable.txt")
+taxatable.file = file.path(out_dir, "ITS_taxonomy.txt")
+
+metadata = read.table(metadata.file, sep = "\t", check.names = F, header = T)
+rownames(metadata) = metadata[, "sample"]
+metadata = metadata[,1:ncol(metadata)]
+
+ASVtable = read.table(ASVtable.file, sep = "\t", check.names = F, header = T)
+rownames(ASVtable) = ASVtable[, "asv_seq"]
+ASVtable = as.matrix(ASVtable[,2:ncol(ASVtable)])
+
+taxatable = as.matrix(read.table(taxatable.file, sep = "\t", check.names = F, header = T))
+rownames(taxatable) = taxatable[, "asv_seq"]
+taxatable = taxatable[,2:ncol(taxatable)]
+
+refseq = readDNAStringSet(ASVfasta.file, format="fasta",
+                          nrec = -1L, skip = 0L, seek.first.rec = FALSE,
+                          use.names = TRUE, with.qualities = FALSE)
+phyloseq <- phyloseq(otu_table = otu_table(ASVtable, taxa_are_rows = TRUE),
+                     sample_data = sample_data(metadata),
+                     tax_table = tax_table(taxatable))
+save(phyloseq, file = file.path(out_dir, "ITS.phyloseq.RData"))
+phyloseq
+```
+
+# Alpha Diversity plots
+## Prune data
+```{r}
+phyloseq = prune_taxa(taxa_sums(phyloseq) > 0, phyloseq)
+```
+
+## Default
+```{r}
+plot_richness(phyloseq)
+```
+
+For now, lets take a look at Chao1 and Shannon diversity indices
+
+```{r}
+plot_richness(phyloseq, measures=c("Chao1", "Shannon"))
+```
+
+## Soil-Treatment combination
+```{r}
+plot_richness(phyloseq, x="soil_treatment", measures=c("Chao1", "Shannon"))
+```
+
+## Time Point
+```{r}
+plot_richness(phyloseq, x="time", measures=c("Chao1", "Shannon"))
+```
+
+Graph was colored by soil-treatment combination. However, this showed no significant difference in alpha diversity between the soil-treatment combinations. Do note there were less T0 soil samples, so there may not be as much power to detect differences.
+
+## Soil and Treatment
+```{r}
+plot_richness(phyloseq, x="treatment", measures=c("Chao1", "Shannon"), color="soil")
+```
+
+Also made a graph to compare the alpha diversity between the soil types, colored by the treatment:
+
+```{r}
+plot_richness(phyloseq, x="soil", measures=c("Chao1", "Shannon"), color="treatment")
+```
+
+
+## Soil-Treatment combination and Time Point
+```{r}
+plot_richness(phyloseq, x="soil_treatment", measures=c("Chao1", "Shannon"), color="time")
+```
+
+# Ordination
+## Default NMDS with Bray distance
+```{r}
+phyloseq.ord <- ordinate(phyloseq, method="NMDS", distance="bray")
+p1 = plot_ordination(phyloseq, phyloseq.ord, type="taxa", color="Phylum", title="taxa")
+print(p1)
+```
+
+## Only with the top 5 phyla
+```{r}
+phylum.sum = tapply(taxa_sums(phyloseq), tax_table(phyloseq)[, "Phylum"], sum, na.rm=TRUE)
+top5phyla = names(sort(phylum.sum, TRUE))[1:5]
+phyloseq = prune_taxa((tax_table(phyloseq)[, "Phylum"] %in% top5phyla), phyloseq)
+phyloseq.ord = ordinate(phyloseq, method="NMDS", distance="bray")
+p2 = plot_ordination(phyloseq, phyloseq.ord, type="taxa", color="Phylum", title="taxa")
+print(p2)
+```
+
+## Plot with facet wrap
+```{r}
+p3 = plot_ordination(phyloseq, phyloseq.ord, type="taxa", color="Phylum", title="taxa") + facet_wrap(~Phylum, 3)
+print(p3)
+```
+
+## Plot with shapes
+```{r}
+p4 = plot_ordination(phyloseq, phyloseq.ord, type="samples", color="soil_treatment", shape="time")
+p4 + geom_polygon(aes(fill=soil_treatment)) + geom_point(size=5) + ggtitle("samples")
+```
